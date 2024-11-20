@@ -1,73 +1,76 @@
 from prompts import create_general_follow_up, create_initial_query, create_multiple_topic_drill_down, create_single_topic_drill_down_noquery, create_single_topic_drill_down_withquery
-from helpers import sample_topic_tree, find_current_topic
+from helpers import sample_topic_tree, find_current_topic, initialize_then_general_follow_up_tree, initialize_then_general_then_single_drillnoquery_tree, initialize_then_general_then_sddnq_then_sddwq_tree
 from topic_tree_management import initialize_topic_tree, update_topic_tree
 from openai_calls import call_openai_api, get_general_followup_response, get_initial_response, get_multi_drill_response, get_single_drill_response
 import json
 import openai
 
+
+
+
 ###############  PROMPT CREATION --> GPT CALL --> TREE UPDATE TESTING  #################
 # INITIAL
-user_query = "help me understand existentialism"
-
-prompt = create_initial_query(user_query)
-
-response = get_initial_response(prompt)
-print(response)
-response_json = json.loads(response)
-
-topic_tree = initialize_topic_tree(response_json)
-print(json.dumps(topic_tree, indent=4))
-
-# GENERAL FOLLOW UP
-user_query = "How does god factor in?"
-
-current_topic_node = find_current_topic(topic_tree["root"])
-print(current_topic_node)
-current_topic = current_topic_node['topic']['branch']
-
-gff_prompt = create_general_follow_up(topic_tree, user_query, current_topic_node['topic']['bud'])
-print(gff_prompt)
-
-gff_response = get_general_followup_response(gff_prompt)
-gff_response_json = json.loads(gff_response)
-
-topic_tree = update_topic_tree(topic_tree, "general_follow_up", gff_response_json, current_topic, user_query)
-print(json.dumps(topic_tree, indent=4))
-
-# SINGLE DRILL DOWN NO QUERY
-current_topic_node = find_current_topic(topic_tree["root"])
-current_topic = current_topic_node['topic']['branch']
-
-sddnq_prompt = create_single_topic_drill_down_noquery(topic_tree, current_topic)
-print(sddnq_prompt)
-
-sddnq_response = get_single_drill_response(sddnq_prompt)
-sddnq_response_json = json.loads(sddnq_response)
-
-topic_tree = update_topic_tree(topic_tree, "single_drill_no_query", sddnq_response_json, current_topic)
-print(json.dumps(topic_tree, indent=4))
-
-# SINGLE DRILL DOWN WITH QUERY
-user_query = "can you give the definition of freedom within the context of existentialism?"
-current_topic_node = find_current_topic(topic_tree["root"])
-current_topic = current_topic_node['topic']['branch']
-
-sddnwq_prompt = create_single_topic_drill_down_withquery(topic_tree, current_topic, user_query)
-print(sddnwq_prompt)
-
-sddwq_response = get_general_followup_response(sddnwq_prompt)
-sddwq_response_json = json.loads(sddwq_response)
-
-topic_tree = update_topic_tree(topic_tree, "single_drill_with_query", sddwq_response_json, current_topic, user_query)
-print(json.dumps(topic_tree, indent=4))
+# user_query = "help me understand existentialism"
+# prompt = create_initial_query(user_query)
+# response = get_initial_response(prompt)
+# response_json = json.loads(response)
+# topic_tree = initialize_topic_tree(response_json)
+# topic_tree = initialize_then_general_follow_up_tree
+# # print(f"Topic tree after initialization: {json.dumps(topic_tree, indent=4)}")
 
 
-# MULTI DRILL
+# # # GENERAL FOLLOW UP
+# user_query = "Can you explain the 'humans are condemned to be free' line a bit more?"
+# current_topic_node = find_current_topic(topic_tree["root"])
+# current_topic = current_topic_node['topic']['branch']
+# print(f"Current topic before general follow up: {current_topic}")
+
+# gff_prompt = create_general_follow_up(topic_tree, user_query, current_topic_node['topic']['bud'])
+# gff_response = get_general_followup_response(gff_prompt)
+# gff_response_json = json.loads(gff_response)
+# topic_tree = update_topic_tree(topic_tree, "general_follow_up", gff_response_json, current_topic, user_query)
+# # print(f"Topic tree after general follow up: {json.dumps(topic_tree, indent=4)}")
 
 
+# # # SINGLE DRILL DOWN NO QUERY
+# current_topic_node = find_current_topic(topic_tree["root"])
+# current_topic = current_topic_node['topic']['branch']
+# print(f"Current topic after general follow up: {current_topic}")
 
-##############################  GPT CALL TESTING  ##############################
+# user_selected_topic = ["Existentialism and the concept of absurdity"]
 
+# sddnq_prompt = create_single_topic_drill_down_noquery(topic_tree, user_selected_topic)
+# sddnq_response = get_single_drill_response(sddnq_prompt)
+# sddnq_response_json = json.loads(sddnq_response)
+# topic_tree = update_topic_tree(topic_tree, "single_drill_no_query", sddnq_response_json, user_selected_topic)
+# # print(f"Topic tree after single drill down no query: {json.dumps(topic_tree, indent=4)}")
+
+
+# # SINGLE DRILL DOWN WITH QUERY
+# topic_tree = initialize_then_general_then_single_drillnoquery_tree
+# user_query = "do I have a responsibility to be free?"
+# current_topic_node = find_current_topic(topic_tree["root"])
+# current_topic = current_topic_node['topic']['branch']
+# print(f"Current topic after single drill down no query: {current_topic}")
+
+# sddnwq_prompt = create_single_topic_drill_down_withquery(topic_tree, current_topic, user_query)
+# sddwq_response = get_single_drill_response(sddnwq_prompt)
+# print(f"gpt's sddwq response: {sddwq_response}")
+      
+# topic_tree = update_topic_tree(topic_tree, "single_drill_with_query", sddwq_response, current_topic, user_query)
+# print(f"Topic tree after single drill down with query: {json.dumps(topic_tree, indent=4)}")
+
+
+# # MULTI DRILL
+# topic_tree = initialize_then_general_then_sddnq_then_sddwq_tree
+# user_query = "How does the concept of 'bad faith' manifest in existentialist art?"
+# user_selected_topics = ["Existentialism in literature and art", "Jean-Paul Sartre's concept of 'bad faith'"]
+
+# multi_drill_prompt = create_multiple_topic_drill_down(topic_tree, user_selected_topics, user_query)
+# multi_drill_response = get_multi_drill_response(multi_drill_prompt)
+
+# topic_tree = update_topic_tree(topic_tree, "multi_drill", multi_drill_response, user_selected_topics, user_query)
+# print(f"Topic tree after multi drill down: {json.dumps(topic_tree, indent=4)}")
 
 
 ###############################  TREE MANAGEMENT TESTING  ##############################

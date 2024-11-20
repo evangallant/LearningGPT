@@ -1,7 +1,28 @@
 from openai import OpenAI
+from pydantic import BaseModel
 import os
 
-def call_openai_api(prompt, temperature=0.5, max_tokens=300):
+client = OpenAI()
+
+# Define data structure models using Pydantic
+class InitialResponse(BaseModel):
+    answer: str
+    topic_name: str
+    sub_topics: list[str]
+
+class SingleDrillResponse(BaseModel):
+    answer: str
+    sub_topics: list[str]
+
+class GeneralFollowupResponse(BaseModel):
+    answer: str
+
+class MultiDrillResponse(BaseModel):
+    combined_topic_name: str
+    answer: str
+    sub_topics: list[str]
+
+def call_openai_api(prompt, response_format, temperature=0.5, max_tokens=300):
     """
     Function to call the OpenAI API using the given prompt and returns the response in JSON format.
     
@@ -15,19 +36,17 @@ def call_openai_api(prompt, temperature=0.5, max_tokens=300):
         dict: The response from GPT in JSON format.
     """
     try:
-        client = OpenAI()
-
-        completion = client.chat.completions.create(
+        completion = client.beta.chat.completions.parse(
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": "You are part of a learning interface, helping users understand topics more thoroughly by exploring sub topics and relationships."},
                 {"role": "user", "content": prompt}
             ],
-            response_format={"type": "json_object"},
+            response_format=response_format,
             temperature=temperature
         )
 
-        return completion.choices[0].message.content
+        return completion.choices[0].message.parsed
     
     except Exception as e:
         print(f"Error calling OpenAI API: {e}")
@@ -44,7 +63,14 @@ def get_initial_response(prompt):
     Returns:
         dict: The response from GPT in JSON format.
     """
-    return call_openai_api(prompt, temperature=0.6)
+    response_format = InitialResponse
+
+    response = call_openai_api(prompt, response_format, temperature=0.6)
+
+    if response:
+        return response.model_dump()  # Convert Pydantic model to a dictionary
+    else:
+        return None
 
 def get_single_drill_response(prompt):
     """
@@ -56,7 +82,14 @@ def get_single_drill_response(prompt):
     Returns:
         dict: The response from GPT in JSON format.
     """
-    return call_openai_api(prompt, temperature=0.5)
+    response_format = SingleDrillResponse
+
+    response = call_openai_api(prompt, response_format, temperature=0.5)
+
+    if response:
+        return response.model_dump()  # Convert Pydantic model to a dictionary
+    else:
+        return None
 
 def get_general_followup_response(prompt):
     """
@@ -68,7 +101,14 @@ def get_general_followup_response(prompt):
     Returns:
         dict: The response from GPT in JSON format.
     """
-    return call_openai_api(prompt, temperature=0.4)
+    response_format = GeneralFollowupResponse
+
+    response = call_openai_api(prompt, response_format, temperature=0.4)
+
+    if response:
+        return response.model_dump()  # Convert Pydantic model to a dictionary
+    else:
+        return None
 
 def get_multi_drill_response(prompt):
     """
@@ -80,15 +120,11 @@ def get_multi_drill_response(prompt):
     Returns:
         dict: The response from GPT in JSON format.
     """
-    return call_openai_api(prompt, temperature=0.7)
+    response_format = MultiDrillResponse
 
-# Example usage
-def main():
-    user_prompt = "Explain how neural networks work."
-    initial_query_prompt = create_initial_query(user_prompt)
-    response = get_initial_response(initial_query_prompt)
+    response = call_openai_api(prompt, response_format, temperature=0.7)
+
     if response:
-        print(response)
-
-if __name__ == "__main__":
-    main()
+        return response.model_dump()  # Convert Pydantic model to a dictionary
+    else:
+        return None

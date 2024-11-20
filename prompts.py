@@ -3,8 +3,8 @@ from helpers import convert_to_bracketed
 
 def create_initial_query(user_query):
     example_response = {
-        "answer": "[An explanation of dot products]",
-        "topic_name": ["A couple-word identifier of the topic the user is asking about, i.e. 'Dot Products'"],
+        "answer": "An explanation of dot products",
+        "topic_name": "A couple-word identifier of the topic the user is asking about, i.e. 'Dot Products'",
         "sub_topics": [
           "Geometric interpretation of dot products",
           "The relationship between dot products and vector projection",
@@ -27,7 +27,7 @@ def create_single_topic_drill_down_noquery(topic_tree, current_topic):
     
     bracketed_topic_tree = "/*TREE START*/ " + str(convert_to_bracketed(topic_tree)) + " /*TREE END*/  "
     example_response = {
-            "answer": """[An explanation of dot products]""",
+            "answer": "An explanation of dot products",
             "sub_topics": [
                 "Geometric interpretation of dot products",
                 "The relationship between dot products and vector projection",
@@ -54,7 +54,7 @@ def create_single_topic_drill_down_withquery(topic_tree, current_topic, user_que
         raise ValueError("User query cannot be empty.")
     
     example_response = {
-            "answer": """[An explanation of the relationship between dot products and vector projection]""",
+            "answer": "An explanation of the relationship between dot products and vector projection",
             "sub_topics": [
                 "Derivation of the vector projection formula",
                 "Applications of vector projection in real-world scenarios",

@@ -1,6 +1,3 @@
-# Update the topic tree
-    # HERE WE NEED TO MAKE SURE TO USE 'None', NOT 'Null' FOR EMPTY VALUES
-
 # Convert a full topic tree to the lite bracketed format
 def convert_to_bracketed(tree, is_current=False):
     def traverse(node, current_marker=""):
@@ -55,6 +52,391 @@ def find_current_topic(node):
 
     # If not found in the current node or branches, return None
     return None
+
+topic_tree_after_initialization_sddnq_sddwq_multidrill = {
+    "root": {
+        "topic": {
+            "branch": [
+                "Existentialism"
+            ],
+            "bud": "Existentialism is a philosophical movement that emerged in the 19th and 20th centuries, focusing on individual freedom, choice, and existence. It emphasizes the idea that humans are free and responsible for their own actions in a world that is often irrational or meaningless. Existentialists believe that individuals must create their own sense of purpose and values in life, rather than relying on external sources such as religion or societal norms. Key figures in existentialism include philosophers like S\u00f8ren Kierkegaard, Friedrich Nietzsche, Jean-Paul Sartre, and Albert Camus, each contributing unique perspectives to the understanding of human existence.\n\nUser Follow-up: How does god factor in?\nGPT Answer: In existentialism, the concept of God is often approached with skepticism or redefined in ways that emphasize human freedom and responsibility. Key existentialist thinkers have varied perspectives on the role of God in human existence. For instance, S\u00f8ren Kierkegaard, often considered the father of existentialism, was a Christian existentialist who believed that faith in God was a personal choice that involved a 'leap of faith' beyond rational evidence. Kierkegaard saw this leap as essential to authentic existence. In contrast, Friedrich Nietzsche famously declared 'God is dead,' suggesting that the traditional, religious framework was no longer viable in the modern world. Nietzsche argued that humans must create their own values in the absence of divine authority. Jean-Paul Sartre, an atheist existentialist, posited that without God, humans are 'condemned to be free,' meaning they must take full responsibility for their actions and the creation of meaning in their lives. Albert Camus, while not explicitly focusing on God, explored the 'absurd,' the conflict between humans' search for meaning and the indifferent universe. In this context, belief in God could be seen as one of many possible responses to the absurd. Overall, existentialism often challenges traditional religious views, emphasizing human autonomy and the subjective creation of meaning.\n\nUser Follow-up: Can you explain the 'humans are condemned to be free' line a bit more?\nGPT Answer: The phrase 'humans are condemned to be free' is a central tenet of Jean-Paul Sartre's existential philosophy. Sartre argued that in the absence of a divine creator, humans are left without a predetermined essence or purpose. This lack of inherent meaning means that individuals must create their own essence through their actions. The 'condemnation' comes from the fact that this freedom is inescapable; we are thrown into existence and must choose how to live, which can be a daunting and burdensome responsibility. This freedom demands that we take full accountability for our choices and the values we adopt, as there is no higher power to dictate what is right or wrong. Thus, while freedom is often seen as a positive aspect, Sartre highlights the weight and anxiety that accompany the necessity of constant choice and self-definition in a world without inherent meaning.",
+            "related_topics": [],
+            "relationship_query": None,
+            "current": False
+        },
+        "branches": [
+            {
+                "topic": {
+                    "branch": "Key figures in existentialism",
+                    "bud": None,
+                    "related_topics": [],
+                    "relationship_query": None,
+                    "current": False
+                },
+                "branches": []
+            },
+            {
+                "topic": {
+                    "branch": "Existentialism and the concept of absurdity",
+                    "bud": "Existentialism is a philosophical movement that explores the nature of human existence, freedom, and choice. A central theme within existentialism is the concept of 'absurdity,' which refers to the conflict between humans' natural tendency to seek inherent value and meaning in life and the silent, indifferent universe that offers none. This idea is most prominently discussed in the works of existentialist thinkers like Albert Camus, who argued that life is absurd because it lacks meaning, yet humans continue to search for it. Camus famously illustrated this through the myth of Sisyphus, where Sisyphus is condemned to roll a boulder up a hill only to watch it roll back down, symbolizing the futile search for meaning. Despite this, Camus suggested that individuals must embrace the absurd condition of life while simultaneously revolting against it by finding personal meaning and joy in their existence. This paradox of embracing the absurd while seeking meaning is a cornerstone of existential thought, challenging individuals to live authentically and embrace their freedom and responsibility.",
+                    "related_topics": [],
+                    "relationship_query": None,
+                    "current": False
+                },
+                "branches": [
+                    {
+                        "topic": {
+                            "branch": "Albert Camus and the Myth of Sisyphus",
+                            "bud": None,
+                            "related_topics": [],
+                            "relationship_query": None,
+                            "current": False
+                        },
+                        "branches": []
+                    },
+                    {
+                        "topic": {
+                            "branch": "Existential freedom and responsibility",
+                            "bud": "User query: do I have a responsibility to be free? Answer: In existentialism, particularly in the works of philosophers like Jean-Paul Sartre, the concept of existential freedom is deeply intertwined with responsibility. Sartre famously declared that 'existence precedes essence,' meaning that individuals are not born with a predefined purpose or essence; rather, they must create it through their actions. This freedom to choose one's path is a fundamental aspect of human existence. However, with this freedom comes the weight of responsibility. Sartre argues that because we are free to make choices, we are also responsible for the consequences of those choices, not only for ourselves but also for the impact they have on others. This responsibility can be daunting, as it implies that we cannot blame our actions on fate, society, or any external forces. Instead, we must own our decisions and the essence we create through them. Thus, in existentialist thought, you do have a responsibility to embrace your freedom and the accountability that comes with it.",
+                            "related_topics": [],
+                            "relationship_query": None,
+                            "current": False
+                        },
+                        "branches": [
+                            {
+                                "topic": {
+                                    "branch": "Jean-Paul Sartre's concept of 'bad faith'",
+                                    "bud": None,
+                                    "related_topics": [],
+                                    "relationship_query": None,
+                                    "current": False
+                                },
+                                "branches": []
+                            },
+                            {
+                                "topic": {
+                                    "branch": "The relationship between freedom and authenticity in existentialism",
+                                    "bud": None,
+                                    "related_topics": [],
+                                    "relationship_query": None,
+                                    "current": False
+                                },
+                                "branches": []
+                            },
+                            {
+                                "topic": {
+                                    "branch": "Comparisons between existential freedom and determinism",
+                                    "bud": None,
+                                    "related_topics": [],
+                                    "relationship_query": None,
+                                    "current": False
+                                },
+                                "branches": []
+                            }
+                        ]
+                    },
+                    {
+                        "topic": {
+                            "branch": "The role of absurdity in existential literature",
+                            "bud": None,
+                            "related_topics": [],
+                            "relationship_query": None,
+                            "current": False
+                        },
+                        "branches": []
+                    }
+                ]
+            },
+            {
+                "topic": {
+                    "branch": "Existentialism in literature and art",
+                    "bud": None,
+                    "related_topics": [],
+                    "relationship_query": None,
+                    "current": False
+                },
+                "branches": []
+            }
+        ]
+    },
+    "combined_topics": [
+        {
+            "topic": {
+                "branch": "'Bad Faith' in Existentialist Art",
+                "bud": "In existentialist art, the concept of 'bad faith,' as proposed by Jean-Paul Sartre, manifests through characters or subjects that deceive themselves to escape the anxiety associated with absolute freedom and responsibility. Artists and writers often portray individuals in existential crises, illustrating how they succumb to societal roles or external definitions of identity to avoid confronting the true nature of their existence. This theme can be seen in characters who live inauthentically, conforming to expectations rather than embracing their freedom to define their essence. In literature and visual arts, this might be depicted through narrative choices, character development, or visual symbolism that emphasize the struggle between authenticity and self-deception.",
+                "related_topics": [
+                    "Existentialism in literature and art",
+                    "Jean-Paul Sartre's concept of 'bad faith'"
+                ],
+                "relationship_query": "How does the concept of 'bad faith' manifest in existentialist art?",
+                "current": True
+            },
+            "branches": [
+                {
+                    "topic": {
+                        "branch": "Existential themes in modernist literature and painting",
+                        "bud": None,
+                        "related_topics": [],
+                        "relationship_query": None,
+                        "current": False
+                    },
+                    "branches": []
+                },
+                {
+                    "topic": {
+                        "branch": "Symbolism of freedom and self-deception in visual arts",
+                        "bud": None,
+                        "related_topics": [],
+                        "relationship_query": None,
+                        "current": False
+                    },
+                    "branches": []
+                },
+                {
+                    "topic": {
+                        "branch": "Role of societal norms in shaping existential crises in art",
+                        "bud": None,
+                        "related_topics": [],
+                        "relationship_query": None,
+                        "current": False
+                    },
+                    "branches": []
+                }
+            ]
+        }
+    ]
+}
+
+initialize_then_general_then_sddnq_then_sddwq_tree = {
+    "root": {
+        "topic": {
+            "branch": [
+                "Existentialism"
+            ],
+            "bud": "Existentialism is a philosophical movement that emerged in the 19th and 20th centuries, focusing on individual freedom, choice, and existence. It emphasizes the idea that humans are free and responsible for their own actions in a world that is often irrational or meaningless. Existentialists believe that individuals must create their own sense of purpose and values in life, rather than relying on external sources such as religion or societal norms. Key figures in existentialism include philosophers like S\u00f8ren Kierkegaard, Friedrich Nietzsche, Jean-Paul Sartre, and Albert Camus, each contributing unique perspectives to the understanding of human existence.\n\nUser Follow-up: How does god factor in?\nGPT Answer: In existentialism, the concept of God is often approached with skepticism or redefined in ways that emphasize human freedom and responsibility. Key existentialist thinkers have varied perspectives on the role of God in human existence. For instance, S\u00f8ren Kierkegaard, often considered the father of existentialism, was a Christian existentialist who believed that faith in God was a personal choice that involved a 'leap of faith' beyond rational evidence. Kierkegaard saw this leap as essential to authentic existence. In contrast, Friedrich Nietzsche famously declared 'God is dead,' suggesting that the traditional, religious framework was no longer viable in the modern world. Nietzsche argued that humans must create their own values in the absence of divine authority. Jean-Paul Sartre, an atheist existentialist, posited that without God, humans are 'condemned to be free,' meaning they must take full responsibility for their actions and the creation of meaning in their lives. Albert Camus, while not explicitly focusing on God, explored the 'absurd,' the conflict between humans' search for meaning and the indifferent universe. In this context, belief in God could be seen as one of many possible responses to the absurd. Overall, existentialism often challenges traditional religious views, emphasizing human autonomy and the subjective creation of meaning.\n\nUser Follow-up: Can you explain the 'humans are condemned to be free' line a bit more?\nGPT Answer: The phrase 'humans are condemned to be free' is a central tenet of Jean-Paul Sartre's existential philosophy. Sartre argued that in the absence of a divine creator, humans are left without a predetermined essence or purpose. This lack of inherent meaning means that individuals must create their own essence through their actions. The 'condemnation' comes from the fact that this freedom is inescapable; we are thrown into existence and must choose how to live, which can be a daunting and burdensome responsibility. This freedom demands that we take full accountability for our choices and the values we adopt, as there is no higher power to dictate what is right or wrong. Thus, while freedom is often seen as a positive aspect, Sartre highlights the weight and anxiety that accompany the necessity of constant choice and self-definition in a world without inherent meaning.",
+            "related_topics": [],
+            "relationship_query": None,
+            "current": False
+        },
+        "branches": [
+            {
+                "topic": {
+                    "branch": "Key figures in existentialism",
+                    "bud": None,
+                    "related_topics": [],
+                    "relationship_query": None,
+                    "current": False
+                },
+                "branches": []
+            },
+            {
+                "topic": {
+                    "branch": "Existentialism and the concept of absurdity",
+                    "bud": "Existentialism is a philosophical movement that explores the nature of human existence, freedom, and choice. A central theme within existentialism is the concept of 'absurdity,' which refers to the conflict between humans' natural tendency to seek inherent value and meaning in life and the silent, indifferent universe that offers none. This idea is most prominently discussed in the works of existentialist thinkers like Albert Camus, who argued that life is absurd because it lacks meaning, yet humans continue to search for it. Camus famously illustrated this through the myth of Sisyphus, where Sisyphus is condemned to roll a boulder up a hill only to watch it roll back down, symbolizing the futile search for meaning. Despite this, Camus suggested that individuals must embrace the absurd condition of life while simultaneously revolting against it by finding personal meaning and joy in their existence. This paradox of embracing the absurd while seeking meaning is a cornerstone of existential thought, challenging individuals to live authentically and embrace their freedom and responsibility.",
+                    "related_topics": [],
+                    "relationship_query": None,
+                    "current": False
+                },
+                "branches": [
+                    {
+                        "topic": {
+                            "branch": "Albert Camus and the Myth of Sisyphus",
+                            "bud": None,
+                            "related_topics": [],
+                            "relationship_query": None,
+                            "current": False
+                        },
+                        "branches": []
+                    },
+                    {
+                        "topic": {
+                            "branch": "Existential freedom and responsibility",
+                            "bud": "User query: do I have a responsibility to be free? Answer: In existentialism, particularly in the works of philosophers like Jean-Paul Sartre, the concept of existential freedom is deeply intertwined with responsibility. Sartre famously declared that 'existence precedes essence,' meaning that individuals are not born with a predefined purpose or essence; rather, they must create it through their actions. This freedom to choose one's path is a fundamental aspect of human existence. However, with this freedom comes the weight of responsibility. Sartre argues that because we are free to make choices, we are also responsible for the consequences of those choices, not only for ourselves but also for the impact they have on others. This responsibility can be daunting, as it implies that we cannot blame our actions on fate, society, or any external forces. Instead, we must own our decisions and the essence we create through them. Thus, in existentialist thought, you do have a responsibility to embrace your freedom and the accountability that comes with it.",
+                            "related_topics": [],
+                            "relationship_query": None,
+                            "current": True
+                        },
+                        "branches": [
+                            {
+                                "topic": {
+                                    "branch": "Jean-Paul Sartre's concept of 'bad faith'",
+                                    "bud": None,
+                                    "related_topics": [],
+                                    "relationship_query": None,
+                                    "current": False
+                                },
+                                "branches": []
+                            },
+                            {
+                                "topic": {
+                                    "branch": "The relationship between freedom and authenticity in existentialism",
+                                    "bud": None,
+                                    "related_topics": [],
+                                    "relationship_query": None,
+                                    "current": False
+                                },
+                                "branches": []
+                            },
+                            {
+                                "topic": {
+                                    "branch": "Comparisons between existential freedom and determinism",
+                                    "bud": None,
+                                    "related_topics": [],
+                                    "relationship_query": None,
+                                    "current": False
+                                },
+                                "branches": []
+                            }
+                        ]
+                    },
+                    {
+                        "topic": {
+                            "branch": "The role of absurdity in existential literature",
+                            "bud": None,
+                            "related_topics": [],
+                            "relationship_query": None,
+                            "current": False
+                        },
+                        "branches": []
+                    }
+                ]
+            },
+            {
+                "topic": {
+                    "branch": "Existentialism in literature and art",
+                    "bud": None,
+                    "related_topics": [],
+                    "relationship_query": None,
+                    "current": False
+                },
+                "branches": []
+            }
+        ]
+    }
+}
+
+initialize_then_general_then_single_drillnoquery_tree = {
+    "root": {
+        "topic": {
+            "branch": [
+                "Existentialism"
+            ],
+            "bud": "Existentialism is a philosophical movement that emerged in the 19th and 20th centuries, focusing on individual freedom, choice, and existence. It emphasizes the idea that humans are free and responsible for their own actions in a world that is often irrational or meaningless. Existentialists believe that individuals must create their own sense of purpose and values in life, rather than relying on external sources such as religion or societal norms. Key figures in existentialism include philosophers like S\u00f8ren Kierkegaard, Friedrich Nietzsche, Jean-Paul Sartre, and Albert Camus, each contributing unique perspectives to the understanding of human existence.\n\nUser Follow-up: How does god factor in?\nGPT Answer: In existentialism, the concept of God is often approached with skepticism or redefined in ways that emphasize human freedom and responsibility. Key existentialist thinkers have varied perspectives on the role of God in human existence. For instance, S\u00f8ren Kierkegaard, often considered the father of existentialism, was a Christian existentialist who believed that faith in God was a personal choice that involved a 'leap of faith' beyond rational evidence. Kierkegaard saw this leap as essential to authentic existence. In contrast, Friedrich Nietzsche famously declared 'God is dead,' suggesting that the traditional, religious framework was no longer viable in the modern world. Nietzsche argued that humans must create their own values in the absence of divine authority. Jean-Paul Sartre, an atheist existentialist, posited that without God, humans are 'condemned to be free,' meaning they must take full responsibility for their actions and the creation of meaning in their lives. Albert Camus, while not explicitly focusing on God, explored the 'absurd,' the conflict between humans' search for meaning and the indifferent universe. In this context, belief in God could be seen as one of many possible responses to the absurd. Overall, existentialism often challenges traditional religious views, emphasizing human autonomy and the subjective creation of meaning.\n\nUser Follow-up: Can you explain the 'humans are condemned to be free' line a bit more?\nGPT Answer: The phrase 'humans are condemned to be free' is a central tenet of Jean-Paul Sartre's existential philosophy. Sartre argued that in the absence of a divine creator, humans are left without a predetermined essence or purpose. This lack of inherent meaning means that individuals must create their own essence through their actions. The 'condemnation' comes from the fact that this freedom is inescapable; we are thrown into existence and must choose how to live, which can be a daunting and burdensome responsibility. This freedom demands that we take full accountability for our choices and the values we adopt, as there is no higher power to dictate what is right or wrong. Thus, while freedom is often seen as a positive aspect, Sartre highlights the weight and anxiety that accompany the necessity of constant choice and self-definition in a world without inherent meaning.",
+            "related_topics": [],
+            "relationship_query": None,
+            "current": False
+        },
+        "branches": [
+            {
+                "topic": {
+                    "branch": "Key figures in existentialism",
+                    "bud": None,
+                    "related_topics": [],
+                    "relationship_query": None,
+                    "current": False
+                },
+                "branches": []
+            },
+            {
+                "topic": {
+                    "branch": "Existentialism and the concept of absurdity",
+                    "bud": "Existentialism is a philosophical movement that explores the nature of human existence, freedom, and choice. A central theme within existentialism is the concept of 'absurdity,' which refers to the conflict between humans' natural tendency to seek inherent value and meaning in life and the silent, indifferent universe that offers none. This idea is most prominently discussed in the works of existentialist thinkers like Albert Camus, who argued that life is absurd because it lacks meaning, yet humans continue to search for it. Camus famously illustrated this through the myth of Sisyphus, where Sisyphus is condemned to roll a boulder up a hill only to watch it roll back down, symbolizing the futile search for meaning. Despite this, Camus suggested that individuals must embrace the absurd condition of life while simultaneously revolting against it by finding personal meaning and joy in their existence. This paradox of embracing the absurd while seeking meaning is a cornerstone of existential thought, challenging individuals to live authentically and embrace their freedom and responsibility.",
+                    "related_topics": [],
+                    "relationship_query": None,
+                    "current": True
+                },
+                "branches": [
+                    {
+                        "topic": {
+                            "branch": "Albert Camus and the Myth of Sisyphus",
+                            "bud": None,
+                            "related_topics": [],
+                            "relationship_query": None,
+                            "current": False
+                        },
+                        "branches": []
+                    },
+                    {
+                        "topic": {
+                            "branch": "Existential freedom and responsibility",
+                            "bud": None,
+                            "related_topics": [],
+                            "relationship_query": None,
+                            "current": False
+                        },
+                        "branches": []
+                    },
+                    {
+                        "topic": {
+                            "branch": "The role of absurdity in existential literature",
+                            "bud": None,
+                            "related_topics": [],
+                            "relationship_query": None,
+                            "current": False
+                        },
+                        "branches": []
+                    }
+                ]
+            },
+            {
+                "topic": {
+                    "branch": "Existentialism in literature and art",
+                    "bud": None,
+                    "related_topics": [],
+                    "relationship_query": None,
+                    "current": False
+                },
+                "branches": []
+            }
+        ]
+    }
+}
+
+initialize_then_general_follow_up_tree = {
+    "root": {
+        "topic": {
+            "branch": [
+                "Existentialism"
+            ],
+            "bud": "Existentialism is a philosophical movement that emerged in the 19th and 20th centuries, focusing on individual freedom, choice, and existence. It emphasizes the idea that humans are free and responsible for their own actions in a world that is often irrational or meaningless. Existentialists believe that individuals must create their own sense of purpose and values in life, rather than relying on external sources such as religion or societal norms. Key figures in existentialism include philosophers like S\u00f8ren Kierkegaard, Friedrich Nietzsche, Jean-Paul Sartre, and Albert Camus, each contributing unique perspectives to the understanding of human existence.\n\nUser Follow-up: How does god factor in?\nGPT Answer: In existentialism, the concept of God is often approached with skepticism or redefined in ways that emphasize human freedom and responsibility. Key existentialist thinkers have varied perspectives on the role of God in human existence. For instance, S\u00f8ren Kierkegaard, often considered the father of existentialism, was a Christian existentialist who believed that faith in God was a personal choice that involved a 'leap of faith' beyond rational evidence. Kierkegaard saw this leap as essential to authentic existence. In contrast, Friedrich Nietzsche famously declared 'God is dead,' suggesting that the traditional, religious framework was no longer viable in the modern world. Nietzsche argued that humans must create their own values in the absence of divine authority. Jean-Paul Sartre, an atheist existentialist, posited that without God, humans are 'condemned to be free,' meaning they must take full responsibility for their actions and the creation of meaning in their lives. Albert Camus, while not explicitly focusing on God, explored the 'absurd,' the conflict between humans' search for meaning and the indifferent universe. In this context, belief in God could be seen as one of many possible responses to the absurd. Overall, existentialism often challenges traditional religious views, emphasizing human autonomy and the subjective creation of meaning.",
+            "related_topics": [],
+            "relationship_query": None,
+            "current": True
+        },
+        "branches": [
+            {
+                "topic": {
+                    "branch": "Key figures in existentialism",
+                    "bud": None,
+                    "related_topics": [],
+                    "relationship_query": None,
+                    "current": False
+                },
+                "branches": []
+            },
+            {
+                "topic": {
+                    "branch": "Existentialism and the concept of absurdity",
+                    "bud": None,
+                    "related_topics": [],
+                    "relationship_query": None,
+                    "current": False
+                },
+                "branches": []
+            },
+            {
+                "topic": {
+                    "branch": "Existentialism in literature and art",
+                    "bud": None,
+                    "related_topics": [],
+                    "relationship_query": None,
+                    "current": False
+                },
+                "branches": []
+            }
+        ]
+    }
+}
 
 
 

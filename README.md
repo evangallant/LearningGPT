@@ -5,8 +5,13 @@ Developing a holistic understanding of the foundation of a topic is the best way
 
 
 ## TODO:
-- Today: outlined general flow, created prompt generation functions, created topic tree generation functions
-- TODO: Figure out order of operations, given a general interaction (initial query, follow up, topic deviance, topic combination, etc.), as well as the processing steps that need to happen between the user's submission --> prompt creation --> API call --> JSON parsing --> tree update --> update what the user sees
+- Done: 
+  -outlined general interaction flow
+  - created prompt generation functions
+  - created topic tree generation functions
+  - created openAI API call functions
+- TODO: 
+  - Fix current_topic assignment (seems to be messed up)
 
 ## Input/Output Process Overview for LearningGPT
 
@@ -159,6 +164,7 @@ Each of the described steps ensures a continuous update of the topic tree while 
       ```
       {
         "answer": "[An explanation of dot products]",
+        "topic_name": ["A couple-word identifier of the topic the user is asking about, i.e. 'Dot Products'"],
         "sub_topics": [
           "Geometric interpretation of dot products",
           "The relationship between dot products and vector projection",
@@ -226,7 +232,8 @@ Each of the described steps ensures a continuous update of the topic tree while 
         - **Response:**
         ```
         {
-            "answer": "[An explanation of the key concepts in dot products that are directly applied in machine learing]",
+            "combined_topic_name": "[A condensed title for the current topics in question]",
+            "answer": """[An explanation of the key concepts in dot products that are directly applied in machine learning]""",
             "sub_topics": [
               "Role of dot products in calculating similarity between feature vectors",
               "Dot products in the weighted sum calculation within neural networks",
@@ -242,18 +249,13 @@ Each of the described steps ensures a continuous update of the topic tree while 
   - **For general follow up:**
     - **Task explanation:** "You are a helpful tutor. Your goal is to improve the user's understanding of the topic in question. This is part of an ongoing line of inquiry, defined by this topic tree:
     [topic tree in JSON format, with a marker for which topic we're on]
-    Based on the context of the topic tree, educationally answer the user's question, AND provide 2-3 relevant sub-topics that the user can choose to drill down on to further improve their understanding. You will provide this information in JSON format, following the structure of this example:"
+    Based on the context of the topic tree, as well as the response that preceded the user's quesion, educationally answer the user's question. You will provide this information in JSON format, following the structure of this example:"
     - Example:
     - **User:** Explain dot products
     - **Response:**
       ```
       {
-        "answer": "[An explanation of dot products]",
-        "sub_topics": [
-          "Geometric interpretation of dot products",
-          "The relationship between dot products and vector projection",
-          "Applications of dot products in physics and engineering"
-        ]
+        "answer": "[An explanation of dot products]"
       }
       ```
     - **Query parameters:**
