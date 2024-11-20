@@ -33,6 +33,30 @@ def convert_to_bracketed(tree, is_current=False):
     # Start from the root of the topic tree
     return traverse(tree["root"])
 
+def find_current_topic(node):
+    """
+    Recursively finds the current topic in the topic tree.
+    
+    Args:
+        node (dict): The current node of the topic tree.
+        
+    Returns:
+        dict: The dictionary of the current topic or None if not found.
+    """
+    # Check if the current node is marked as current
+    if node["topic"].get("current", False):
+        return node
+
+    # Recursively check each branch if it exists
+    for branch in node.get("branches", []):
+        current_topic = find_current_topic(branch)
+        if current_topic:
+            return current_topic
+
+    # If not found in the current node or branches, return None
+    return None
+
+
 
 sample_topic_tree = {
   "root": {
