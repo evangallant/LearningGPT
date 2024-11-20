@@ -1,6 +1,6 @@
 # LearningGPT 
 
-The idea is to make use of ChatGPT's unique ability to patiently drill down on topics
+The idea is to make use of ChatGPT's unique ability to patiently drill down on topics.
 Developing a holistic understanding of the foundation of a topic is the best way to set yourself up to learn more.
 
 
@@ -145,11 +145,11 @@ Each of the described steps ensures a continuous update of the topic tree while 
 
 
 ## PROMPTS
-# Which prompt is used is based on:
-  # If it is the first query (initial prompt)
-  # If the user selects a topic to drill down on
-  # If the user supplies a query related to the drill down
-  # How many topics the user selects to drill down on at one time
+#### Which prompt is used is based on:
+  - If it is the first query (initial prompt)
+  - If the user selects a topic to drill down on
+  - If the user supplies a query related to the drill down
+  - How many topics the user selects to drill down on at one time
 
 - **Initial prompt:**
   - **Task explanation:** "You are a helpful tutor. Your goal is to improve the user's understanding of the topic in question. Do this by educationally answering the user's question, AND providing 2-3 relevant sub-topics that the user can choose to drill down on to further improve their understanding. You will provide this information in JSON format, following the structure of this example:"
