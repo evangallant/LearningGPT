@@ -8,29 +8,100 @@ Developing a holistic understanding of the foundation of a topic is the best way
 - Today: outlined general flow, created prompt generation functions, created topic tree generation functions
 - TODO: Figure out order of operations, given a general interaction (initial query, follow up, topic deviance, topic combination, etc.), as well as the processing steps that need to happen between the user's submission --> prompt creation --> API call --> JSON parsing --> tree update --> update what the user sees
 
-## GENERAL PROCESS
+## Input/Output Process Overview for LearningGPT
 
-**Primary input:**
-- User asks a question about a subject
+### Step 1: Initial Question from User
+- **Input:**
+  - **user_query**: e.g., "Can you help me understand logarithms?"
+- **Process:**
+  1. **Prompt Creation**:
+     - Call `create_initial_query(user_query)` to generate the `initial_query`. This function constructs a complete prompt that will guide GPT in providing an answer and suggesting sub-topics.
+  2. **Call GPT API**:
+     - Call the OpenAI API to get the JSON response (`gpt_json`).
+     - **gpt_json Structure**:
+       - "answer": (string) The main educational response, e.g., "Logarithms help determine how many times a base number is multiplied to achieve a given value."
+       - "topic_name": (string) A brief identifier for the topic, e.g., "Logarithms Overview."
+       - "sub_topics": (list of strings) Suggested drill-down topics, e.g., ["Logarithmic rules", "Logarithms in real-world applications", "Base changes in logarithms"]
+  3. **Initialize Topic Tree**:
+     - Call `initialize_topic_tree(gpt_json)` to create the initial topic tree, structured based on the GPT output.
+  4. **Output:**
+     - Display the response (main answer), suggested topics, and a visual representation of the topic tree to the user.
 
-**Primary output:**
-- A section-ized response, where the user can select one section to drill down on
-- Here, we warp the input with a prompt that yields a sectioned response, with a main explanation and sections which each have a relevant topic that the user may want to drill down on for better understanding.
-- The **TOPIC** is the building block of this system.
+### Step 2: User Follows Up with a General Question (General Follow-Up)
+- **Input:**
+  - **topic_tree**: The current topic tree structure.
+  - **user_query**: e.g., "But why are logarithms useful in real life?"
+  - **bud**: The content of the current topic node that contains the full educational response.
+- **Process:**
+  1. **Prompt Creation**:
+     - Call `create_general_follow_up(topic_tree, user_query, bud)` to generate a prompt for GPT.
+  2. **Call GPT API**:
+     - Call the OpenAI API to get a new JSON response (`gpt_json`).
+     - **gpt_json Structure**:
+       - "answer": (string) The main follow-up response, e.g., "Logarithms are useful for understanding exponential growth, such as population growth, and for simplifying complex multiplication problems in various scientific domains."
+  3. **Update Topic Tree**:
+     - Call `update_topic_tree(topic_tree, "general_follow_up", gpt_json, current_topic, user_query)` to append the new content to the corresponding topic node.
+     - The `current_topic` is derived from the topic tree's current state, specifically finding the node where the `current` flag is set to `True`.
+  4. **Output:**
+     - Display the updated response, adding the new explanation and highlighting the growth of the knowledge in the topic tree.
 
-**Subsequent input (drill down - one TOPIC):**
-- A user may read through the main response, understand some sections, but need more detail on a given **TOPIC**
-- The user selects that section by clicking on it, then can input a question, which will be bundled together.
-- We get a response by providing the topic tree, question, and prompt wrapper indicating which topic to drill down on.
+### Step 3: User Drills Down into a Specific Topic Without an Additional Query (Single Drill Down Without Query)
+- **Input:**
+  - **topic_tree**: The current topic tree structure.
+  - **current_topic**: e.g., ["Logarithmic rules"] (an array containing the selected topic to drill down into).
+- **Process:**
+  1. **Prompt Creation**:
+     - Call `create_single_topic_drill_down_noquery(topic_tree, current_topic)` to generate a prompt for GPT.
+  2. **Call GPT API**:
+     - Call the OpenAI API to get the JSON response (`gpt_json`).
+     - **gpt_json Structure**:
+       - "answer": (string) An in-depth explanation of the chosen topic, e.g., "Logarithmic rules, such as product, quotient, and power rules, help simplify complex logarithmic expressions."
+       - "sub_topics": (list of strings) Suggested sub-topics, e.g., ["Product rule of logarithms", "Change of base formula", "Natural logarithms"]
+  3. **Update Topic Tree**:
+     - Call `update_topic_tree(topic_tree, "single_drill_no_query", gpt_json, current_topic)` to update the current topic with the new answer and add new branches for the sub-topics.
+  4. **Output:**
+     - Display the updated response, including the in-depth explanation of the chosen topic and new suggested sub-topics.
 
-**Subsequent input (drill down - multiple TOPICs):**
-- Same process as with the single topic, but we offer the user an option to select multiple **TOPICs**
-- An input box will appear where the user writes a query about the relationship between multiple topics, OR select from a set of predefined relationship queries, such as:
-    - "Explain how these topics are related"
-    - "How does [Topic A] provide a foundation for understanding [Topic B]?"
-    - "What are the key concepts in [Topic A] that are directly applied in [Topic B]?"
-  - Here, we should aim for variable-ized topics so the user can plug in selected topics into the boilerplate queries.
-- We get a response by providing the topic tree, query, and prompt wrapper indicating which **TOPICs** the questions correspond to.
+### Step 4: User Drills Down with a Specific Question (Single Drill Down with Query)
+- **Input:**
+  - **topic_tree**: The current topic tree structure.
+  - **current_topic**: e.g., ["Logarithms in real-world applications"]
+  - **user_query**: e.g., "How are logarithms used in audio engineering?"
+- **Process:**
+  1. **Prompt Creation**:
+     - Call `create_single_topic_drill_down_withquery(topic_tree, current_topic, user_query)` to generate a prompt that incorporates the user's specific question.
+  2. **Call GPT API**:
+     - Call the OpenAI API to get the JSON response (`gpt_json`).
+     - **gpt_json Structure**:
+       - "answer": (string) e.g., "In audio engineering, logarithms are used to measure sound intensity in decibels, allowing for better perception and control of volume changes."
+       - "sub_topics": (list of strings) Suggested sub-topics, e.g., ["Decibels and sound pressure levels", "Frequency response curves", "Application of logarithms in equalizers"]
+  3. **Update Topic Tree**:
+     - Call `update_topic_tree(topic_tree, "single_drill_with_query", gpt_json, current_topic, user_query)` to update the current topic's `bud` and generate new branches for sub-topics.
+  4. **Output:**
+     - Display the updated in-depth response, including the answer to the user's question and further suggested topics.
+
+### Step 5: User Wants to Explore Relationships Between Multiple Topics (Multi Drill Down)
+- **Input:**
+  - **topic_tree**: The current topic tree structure.
+  - **current_topics**: e.g., ["Logarithmic rules", "Logarithms in real-world applications"]
+  - **user_query**: e.g., "How do logarithmic rules help in simplifying calculations in scientific domains?"
+- **Process:**
+  1. **Prompt Creation**:
+     - Call `create_multiple_topic_drill_down(topic_tree, current_topics, user_query)` to generate a prompt for exploring the relationship between multiple selected topics.
+  2. **Call GPT API**:
+     - Call the OpenAI API to get the JSON response (`gpt_json`).
+     - **gpt_json Structure**:
+       - "combined_topic_name": (string) e.g., "Logarithmic Rules and Applications"
+       - "answer": (string) e.g., "Logarithmic rules such as product and power rules simplify calculations by reducing complex multiplication and division, which is particularly helpful in scientific domains dealing with exponential data."
+       - "sub_topics": (list of strings) Suggested sub-topics, e.g., ["Using logarithms in astronomical calculations", "Logarithmic data transformation in biology"]
+  3. **Update Topic Tree**:
+     - Call `update_topic_tree(topic_tree, "multi_drill", gpt_json, current_topics, user_query)` to create a new branch under "combined_topics".
+  4. **Output:**
+     - Display the combined explanation and suggested sub-topics, visually linking multiple areas of exploration.
+
+### Summary of the Steps
+Each of the described steps ensures a continuous update of the topic tree while preserving contextual learning. With every user interaction, the topic tree either deepens (via a single drill) or broadens (via a multi-topic drill), all while maintaining a structured approach to managing educational content and exploration.
+
 
 
 ## FEATURES
